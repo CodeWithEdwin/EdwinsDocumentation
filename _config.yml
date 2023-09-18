@@ -3,6 +3,6 @@ plugins:
 - jekyll-remote-theme
 title: Edwin's Documenation
 description: Edwin is a .Net developer all his findings are here
-show_downloads: flase
+show_downloads: false
 google_analytics:
 theme: jekyll-theme-time-machine
