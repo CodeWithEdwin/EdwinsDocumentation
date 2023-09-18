@@ -14,7 +14,7 @@ Is er in het doel azure devops project nog geen wiki aanwezig, maak deze dan eer
 
 De repository met code kan je importeren.
 Hiermee komen de sources over en de zgn. Tags.
-![image.png](/.attachments/image-5b16c3c5-e7b2-4bbf-9dd2-79f7d7b84950.png)
+![ImportRepositoy](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevopsMigratie/ImportRepositoy.png)
 
 # Work Items
 
@@ -241,7 +241,8 @@ Op deze manier worden de work items toegevoegd in de volgorde zoals ze ook toege
 In de description in work items kunnen afbeeldingen zijn opgenomen. Om deze juist te migreren dient de instelling aan te staan:
 `"FixHtmlAttachmentLinks": true`
 
-![image.png](/.attachments/image-de02fbe6-c270-4144-aa64-0cfd856732e5.png)
+![ImportRepositoy](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevopsMigratie/FixHtmlAttachmentLinks.png)
+
 Het betreft hier een beta functie, maar dit levert wel op dat de afbeeldingen ook overgezet worden in de Description.
 
 ### Attachments
