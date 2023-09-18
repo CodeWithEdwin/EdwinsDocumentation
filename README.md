@@ -3,4 +3,5 @@ Test pagina
 
 
 #Inhoud
-[Migratie Azure Devops - Azure Devops][AzureDevopsAzureDevopsMigratie.md]
+
+[Migratie Azure Devops - Azure Devops](./AzureDevopsAzureDevopsMigratie.html)
