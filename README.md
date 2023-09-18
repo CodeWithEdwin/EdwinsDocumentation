@@ -1,7 +1,6 @@
-Test pagina
-#Welkom!
+# Welkom!
 
 
-#Inhoud
+# Inhoud
 
 [Migratie Azure Devops - Azure Devops](./AzureDevopsAzureDevopsMigratie.html)
