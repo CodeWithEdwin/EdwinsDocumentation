@@ -241,7 +241,7 @@ Op deze manier worden de work items toegevoegd in de volgorde zoals ze ook toege
 In de description in work items kunnen afbeeldingen zijn opgenomen. Om deze juist te migreren dient de instelling aan te staan:
 `"FixHtmlAttachmentLinks": true`
 
-![ImportRepositoy](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevopsMigratie/FixHtmlAttachmentLinks.png)
+![FixHtmlAttachmentLinks](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevopsMigratie/FixHtmlAttachmentLinks.png)
 
 Het betreft hier een beta functie, maar dit levert wel op dat de afbeeldingen ook overgezet worden in de Description.
 
@@ -255,7 +255,9 @@ Bijlagen bij work items worden eerst op schijf opgeslagen uit de bron work item 
 Gebleken is dat work items onjuist overgezet worden op het moment dat de instelling _SkipToFinalRevisedWorkItemType_ aan staat. Alle work items die ooit een keer van type zijn gewijzigd levert fouten op tijdens de migratie. Zet deze instelling daarom uit:
 `"SkipToFinalRevisedWorkItemType": false`
 
-![image.png](/.attachments/image-aaf40eee-3346-4b24-a369-57bce60f35a4.png)
+![SkipToFinalRevisedWorkItemType](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevopsMigratie/SkipToFinalRevisedWorkItemType.png)
+
+
 
 ## Start tool met behoud van logging
 
