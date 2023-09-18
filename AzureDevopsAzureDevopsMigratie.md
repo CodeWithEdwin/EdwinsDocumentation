@@ -49,6 +49,7 @@ Je kunt de tool zelf een standaard configuratie laten maken door dit cmd command
 `migration.exe init`
 
 ## Configuration.json instellen
+
 De tool kan je configureren via de _configuration.json_. Hieronder de toelichting voor migreren van een azure devops project met het Scrum process.
 
 ### Toegang azure devops
@@ -64,7 +65,7 @@ Vul bij _Collection_ de URL in van de organisatie waarin het project zich bevind
 `https://dev.azure.com/[Organisatie]/`
 Vul bij _Project_ de naam van het project in.
 
-###ReflectedWorkItemIDFieldName
+### ReflectedWorkItemIDFieldName
 
 Vul in de het custom field ‘ReflectedWorkItemId’ in bij 
 `"ReflectedWorkItemIDFieldName": "Custom.ReflectedWorkItemId"`
@@ -202,6 +203,7 @@ Deze processor staat standaard uit, zet deze dus altijd aan:
 `"Enabled": true`
 
 ###Iterations
+
 Om de juiste iterations (in _Project settings_ > _Project configuration_ ) over te zetten dienen deze gespecificeerd te worden in _NodeBasePaths_.
 
 Als voorbeeld staan in het configuration.json een aantal opgenoemd:
@@ -216,7 +218,8 @@ Als voorbeeld staan in het configuration.json een aantal opgenoemd:
 Je kunt ook het Product en de Area vermelden. Alle path's onder de Area worden dan gemigreerd.
 
 
-###Query
+### Query
+
 Om te migreren kan je ook de work items in stappen over zetten door een set aan work items eerst te migreren.
 Dit kun je doen door een query in te vullen. Standaard staat hier:
 
@@ -235,24 +238,28 @@ Aanbevolen is om deze te gebruiken:
 `"WIQLOrderBit": "[System.Id] asc"`
 Op deze manier worden de work items toegevoegd in de volgorde zoals ze ook toegevoegd zijn in het bron azure devops project.
 
-###Html attachment links
+### Html attachment links
+
 In de description in work items kunnen afbeeldingen zijn opgenomen. Om deze juist te migreren dient de instelling aan te staan:
 `"FixHtmlAttachmentLinks": true`
 
 ![image.png](/.attachments/image-de02fbe6-c270-4144-aa64-0cfd856732e5.png)
 Het betreft hier een beta functie, maar dit levert wel op dat de afbeeldingen ook overgezet worden in de Description.
 
-###Attachments
+### Attachments
+
 Bijlagen bij work items worden eerst op schijf opgeslagen uit de bron work item om ze vervolgens over te zetten naar het doel work item. Om deze bijlagen eerst op te slaan vul hier een map in die de tool aan kan maken:
 `"AttachmentWorkingPath": "c:\\temp\\WorkItemAttachmentWorkingFolder\\"`
 
-###Final Revised Work item type
+### Final Revised Work item type
+
 Gebleken is dat work items onjuist overgezet worden op het moment dat de instelling _SkipToFinalRevisedWorkItemType_ aan staat. Alle work items die ooit een keer van type zijn gewijzigd levert fouten op tijdens de migratie. Zet deze instelling daarom uit:
 `"SkipToFinalRevisedWorkItemType": false`
 
 ![image.png](/.attachments/image-aaf40eee-3346-4b24-a369-57bce60f35a4.png)
 
-##Start tool met behoud van logging
+## Start tool met behoud van logging
+
 Als de tool gestart wordt op de aanbevolen manier:
 `migration.exe execute --config .\configuration.json`
 Dan zie je enkel en alleen de logging in het command prompt verschijnen.
