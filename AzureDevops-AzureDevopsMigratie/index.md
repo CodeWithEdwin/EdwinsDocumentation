@@ -70,7 +70,7 @@ Vul in de het custom field ‘ReflectedWorkItemId’ in bij
 
 De tip die hierbij wordt vermeld op [https://nkdagility.com/learn/azure-devops-migration-tools/server-configuration/](https://nkdagility.com/learn/azure-devops-migration-tools/server-configuration/) is:
 
-![image.png](/.attachments/image-c193284b-c6a2-45e2-a04b-2c47ef43d4ac.png)
+![ImportRepositoy](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevopsMigratie/ReflectedWorkItemId.png)
 
 ### FieldMaps
 
