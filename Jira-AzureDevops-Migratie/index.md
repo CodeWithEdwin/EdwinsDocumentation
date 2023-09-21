@@ -1,4 +1,4 @@
-#Overstappen
+# Overstappen
 
 Om over te gaan van het Jira ticket systeem naar Azure Devops is het natuurlijk het fijnste als alle Jira-issues ook beschikbaar komen in Azure Devops.
 
@@ -12,9 +12,9 @@ Met deze stappen worden de Jira issues omgezet naar Azure Devops, waarbij in de 
 
 Dit document geeft een beschrijving op basis van versie _v2.3.117_ in nieuwere versie kan het e.e.a. verbeterd zijn en/of aangepast. Werk deze pagina dan bij met de meest recente gegevens / aanpassingen.
 
-#Configuratie
+# Configuratie
 
-##json configuratie
+##  json configuratie
 Bij het downloaden van de tool worden 3 configuratie *.json Samples geleverd. Welke gebruikt moet worden hangt af van het type van het Azure Devops project. Het type kun je terug vinden in Azure Devops onder _Project Settings_ -> _General_ -> _Overview_ onder de kop _Process_.
 Kopieer de *.json in de root map van de tool. Pas deze zonodig nog aan.
 
@@ -22,7 +22,7 @@ Kopieer de *.json in de root map van de tool. Pas deze zonodig nog aan.
 Hoe je het e.e.a. moet configureren hangt af van hoe je Azure Devops ingericht hebt en hoe je deze wilt inrichten.
 In de [configuratie documentatie](https://github.com/solidify/jira-azuredevops-migrator/blob/master/docs/config.md) kan je terug vinden wat je kunt configureren.
 
-##Users
+##  Users
 
 In Jira worden gebruikers (e-mailadressen) gebruikt waarop tickets en comments aan gerelateerd worden. Omdat het e.e.a. in Azure Devops af kan wijken dien je een _Users.txt_ bestand aan te maken in de root map van de tool. Dit bestand maakt de mapping van Jira gebruiker naar Azure Devops gebruikers. De inhoudt kan er bijv. als volgt uit zien:
 
@@ -31,7 +31,7 @@ User1@jira.nl=User1@AzureDevops.nl
 User2@jira.nl=User2@AzureDevops.nl
 ```
 
-#Export
+# Export
 
 De export exporteert de Jira issues (incl. bijlagen en comments). Dit kan je eenvoudig doen door het volgende CMD commando uit te voeren:
 
@@ -46,7 +46,7 @@ _config-scrum.json_ = de json file die je wilt gebruiken die de configuratie bev
 
 In de export map wordt een export-logfile weggeschreven, zodat je altijd na kunt gaan wat je op je scherm te zien hebt gekregen.
 
-#Import
+# Import
 
 De import importeert de export Jira issues naar Azure Devops. Dit kan je eenvoudig doen door het volgende CMD commando uit te voeren:
 
@@ -60,13 +60,13 @@ _config-scrum.json_ = de json file die je wilt gebruiken die de configuratie bev
 
 In de export map wordt een import-logfile weggeschreven, zodat je altijd na kunt gaan wat je op je scherm te zien hebt gekregen.
 
-#Configuratie aanpassingen na run
+# Configuratie aanpassingen na run
 
 Indien er ergens iets niet goed gaat bij ofwel de export ofwel de import is het verstandig om na een configuratie wijziging **altijd** de export en import volledig opnieuw te draaien. Gezien het onbekend is hoe de configuratie exact gebruikt wordt. Verwijder wel altijd eerst de in Azure Devops aangemaakte issues, zodat er geen duplicaten ontstaan.
 
-#Fouten
+# Fouten
 
-##Bijlagen
+##  Bijlagen
 
 Het kan voorkomen dat de volgende fout getoond wordt bij de export:
 `Cannot find info for attachment '25662', skipping. Reason 'Response Content: {"errorMessages":["The attachment with id '25662' does not exist"],"errors":{}}'.`
@@ -79,7 +79,7 @@ Dit resulteert bij de import in de melding:
 
 Deze kunnen dus genegeerd worden.
 
-##Jira Epics
+##  Jira Epics
 
 Het blijkt dat de in Jira genoemde Epics niet altijd juist gelinkt worden in Azure Devops.
 
@@ -100,7 +100,7 @@ Dit kan bij de export resulteren in de melding:
 
 In de voorgaande log melding staat om welk Jira issue nummer het gaat. Zoek deze op in Azure Devops en loop alle gelinkte items na.
 
-#Links
+# Links
 
 [Tool jira-azuredevops-migrator](https://github.com/solidify/jira-azuredevops-migrator)
 [Tool download](https://github.com/solidify/jira-azuredevops-migrator/releases)
