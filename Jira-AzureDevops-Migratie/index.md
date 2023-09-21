@@ -102,8 +102,8 @@ In de voorgaande log melding staat om welk Jira issue nummer het gaat. Zoek deze
 
 # Links
 
-[Tool jira-azuredevops-migrator](https://github.com/solidify/jira-azuredevops-migrator)
-[Tool download](https://github.com/solidify/jira-azuredevops-migrator/releases)
-[Officiële toelichting tool](https://solidify.se/blog/jira-azure-devops-migration)
-[Toelichting tool](https://peterrombouts.nl/2019/08/09/migrating-from-jira-to-azure-devops/)
-[Configuratie uitleg](https://github.com/solidify/jira-azuredevops-migrator/blob/master/docs/config.md)
+* [Tool jira-azuredevops-migrator](https://github.com/solidify/jira-azuredevops-migrator)
+* [Tool download](https://github.com/solidify/jira-azuredevops-migrator/releases)
+* [Officiële toelichting tool](https://solidify.se/blog/jira-azure-devops-migration)
+* [Toelichting tool](https://peterrombouts.nl/2019/08/09/migrating-from-jira-to-azure-devops/)
+* [Configuratie uitleg](https://github.com/solidify/jira-azuredevops-migrator/blob/master/docs/config.md)
