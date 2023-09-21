@@ -14,7 +14,7 @@ Is er in het doel azure devops project nog geen wiki aanwezig, maak deze dan eer
 
 De repository met code kan je importeren.
 Hiermee komen de sources over en de zgn. Tags.
-![ImportRepositoy](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevopsMigratie/ImportRepositoy.png)
+![ImportRepositoy](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/ImportRepositoy.png)
 
 # Work Items
 
@@ -70,7 +70,7 @@ Vul in de het custom field ‘ReflectedWorkItemId’ in bij
 
 De tip die hierbij wordt vermeld op [https://nkdagility.com/learn/azure-devops-migration-tools/server-configuration/](https://nkdagility.com/learn/azure-devops-migration-tools/server-configuration/) is:
 
-![ImportRepositoy](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevopsMigratie/ReflectedWorkItemId.png)
+![ImportRepositoy](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/ReflectedWorkItemId.png)
 
 ### FieldMaps
 
@@ -241,7 +241,7 @@ Op deze manier worden de work items toegevoegd in de volgorde zoals ze ook toege
 In de description in work items kunnen afbeeldingen zijn opgenomen. Om deze juist te migreren dient de instelling aan te staan:
 `"FixHtmlAttachmentLinks": true`
 
-![FixHtmlAttachmentLinks](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevopsMigratie/FixHtmlAttachmentLinks.png)
+![FixHtmlAttachmentLinks](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/FixHtmlAttachmentLinks.png)
 
 Het betreft hier een beta functie, maar dit levert wel op dat de afbeeldingen ook overgezet worden in de Description.
 
@@ -255,7 +255,7 @@ Bijlagen bij work items worden eerst op schijf opgeslagen uit de bron work item 
 Gebleken is dat work items onjuist overgezet worden op het moment dat de instelling _SkipToFinalRevisedWorkItemType_ aan staat. Alle work items die ooit een keer van type zijn gewijzigd levert fouten op tijdens de migratie. Zet deze instelling daarom uit:
 `"SkipToFinalRevisedWorkItemType": false`
 
-![SkipToFinalRevisedWorkItemType](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevopsMigratie/SkipToFinalRevisedWorkItemType.png)
+![SkipToFinalRevisedWorkItemType](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/SkipToFinalRevisedWorkItemType.png)
 
 
 
