@@ -1,6 +1,10 @@
 Migratie van de ene Azure Devops project naar de andere Azure Devops project kan in een aantal stappen gedaan worden.
 Omdat het e.e.a. wisselt per project staan hier slechts enkele stappen beschreven.
 
+# Rechten
+
+Om te kunnen migreren is het verstandig om in de bron en doel Azure Devops projecten te beschikken over voldoende rechten. Daarom is het handig om in beide projecten 'Project administrator' rechten te hebben.
+
 # Wiki
 
 Wiki's die gepublished as code zijn, zitten als onderdeel in de Repository waar ook de Code van de applicatie staat. Die komen met de migratie van de code repository direct mee.
@@ -14,7 +18,23 @@ Is er in het doel azure devops project nog geen wiki aanwezig, maak deze dan eer
 
 De repository met code kan je importeren.
 Hiermee komen de sources over en de zgn. Tags.
-![ImportRepositoy](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/ImportRepositoy.png)
+
+Maak in het bron azure devops project een nieuwe accesstoken aan die **volledige rechten** heeft.
+![PAT_aanmaken](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/PAT_aanmaken.png)
+**Onthoud dit token goed!**
+
+Kopieer in de clone url van de bron project:
+![copy_clone_url](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/copy_clone_url.png)
+
+Ga in het doel project naar Repos:
+![importGit](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/importGit.png)
+
+Klik op Import.
+Vul de Clone url in, je gebruikersnaam en het _PersonalAccessToken_.
+![Authenitcate_PAT](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/Authenitcate_PAT.png)
+
+Klik vervolgens op Import en wacht geduldig af:
+![import](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/import.png)
 
 # Work Items
 
