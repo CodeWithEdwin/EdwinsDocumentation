@@ -278,6 +278,15 @@ Gebleken is dat work items onjuist overgezet worden op het moment dat de instell
 ![SkipToFinalRevisedWorkItemType](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/SkipToFinalRevisedWorkItemType.png)
 
 
+Dit heeft wel concequenties. Omdat alle history overgezet wordt kan dit betekenen dat je itreaties of Area's die gebruikt zijn maar inmiddels verwijderd handmatig moet aanmaken in het doel Azure Devops project. In de logging van wordt dit op een volgende manier aangegeven:
+
+```
+[08:00:25 FTL] !! There are 1 AreaPaths found in the history of the Source that are missing from the Target. These MUST be added or mapped with a fieldMap before we can continue.
+[08:00:25 WRN] MISSING Area: ****\****
+[08:00:27 FTL] !! There are 1 IterationPaths found in the history of the Source that are missing from the Target. These MUST be added or mapped with a fieldMap before we can continue.
+[08:00:27 WRN] MISSING Iteration: ****\****
+``` 
+
 
 ## Start tool met behoud van logging
 
