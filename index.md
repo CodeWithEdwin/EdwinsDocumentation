@@ -5,6 +5,7 @@ Dit is mijn site met documenatie.
 
 * [Migratie Azure Devops - Azure Devops](./AzureDevops-AzureDevops-Migratie/index.html)
 * [Migratie Jira - Azure Devops](./Jira-AzureDevops-Migratie/index.html)
+* [Visual Studio](./VisualStudio/index.html)
 
 # Log Parser
 
@@ -16,3 +17,4 @@ Dit is mijn site met documenatie.
 
 # Handige applicaties
 * [Wintail](https://www.baremetalsoft.com/wintail/)
+
