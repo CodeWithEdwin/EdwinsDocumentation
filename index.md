@@ -19,5 +19,5 @@ Dit is mijn site met documenatie.
 * [Wintail](https://www.baremetalsoft.com/wintail/)
 
 
-#Documentatie links
-* [Bankers rounding] (https://rounding.to/understanding-the-bankers-rounding/)
+# Documentatie links
+* [Bankers rounding](https://rounding.to/understanding-the-bankers-rounding/)
