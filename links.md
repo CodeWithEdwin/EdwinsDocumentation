@@ -1,3 +1,5 @@
+<< [Home](./index.html)
+
 # Log Parser
 
 * [Download Log Parser](https://www.microsoft.com/en-US/download/details.aspx?id=24659)
