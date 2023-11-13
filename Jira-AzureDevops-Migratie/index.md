@@ -1,4 +1,4 @@
-<< [Home](././index.html)
+<< [Home](https://codewithedwin.github.io/EdwinsDocumentation/)
 
 # Overstappen
 

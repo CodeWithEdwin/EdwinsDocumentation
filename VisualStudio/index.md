@@ -1,4 +1,4 @@
-<< [Home](././index.html)
+<< [Home](https://codewithedwin.github.io/EdwinsDocumentation/)
 
 # Extensions
 * [CodeMaid](https://marketplace.visualstudio.com/items?itemName=SteveCadwallader.CodeMaid)
