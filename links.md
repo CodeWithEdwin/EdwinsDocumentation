@@ -9,7 +9,7 @@
 
 # Javascript
 
-* [Template literals (Template strings) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
+* [Template literals -Template strings- - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
 * [Difference Between var and let in JavaScript](https://www.javascripttutorial.net/es6/difference-between-var-and-let/)
 * [Introduction to the WS-Federation and Microsoft ADFS | by Jen-Hsuan Hsieh (Sean) | A Layman | Medium](https://medium.com/a-layman/introduction-to-the-ws-federation-and-microsoft-adfs-33a0ce2ac686)
 * [File drag and drop - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop#prevent_the_browsers_default_drag_behavior)
