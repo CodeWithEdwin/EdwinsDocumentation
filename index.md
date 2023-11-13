@@ -14,7 +14,3 @@ Dit is mijn site met documenatie.
 
 # Handige applicaties
 * [Wintail](https://www.baremetalsoft.com/wintail/)
-
-
-# Documentatie links
-* [Bankers rounding](https://rounding.to/understanding-the-bankers-rounding/)
