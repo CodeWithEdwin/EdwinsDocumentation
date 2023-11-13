@@ -47,7 +47,7 @@
 # Overig
 
 * [SEI CERT Coding Standards - CERT Secure Coding - Confluence](https://wiki.sei.cmu.edu/confluence/display/seccode/SEI+CERT+Coding+Standards)  
-* [Bare Metal Software > WinTail - Free Tail for Windows](http://www.baremetalsoft.com/wintail/)
+* [Bare Metal Software - WinTail - Free Tail for Windows](http://www.baremetalsoft.com/wintail/)
 * [BaseX | The XML Framework: Lightweight and High-Performance Data Processing](https://basex.org/)
 * [How to move a git repository with history | Atlassian Git Tutorial](https://www.atlassian.com/git/tutorials/git-move-repository)
 * [13. Validating XML against XSD in C# using XmlReader - YouTube](https://www.youtube.com/watch?v=wTgSS8X90aA)
