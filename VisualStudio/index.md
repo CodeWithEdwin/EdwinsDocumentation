@@ -1,3 +1,5 @@
+<< [Home](././index.html)
+
 # Extensions
 * [CodeMaid](https://marketplace.visualstudio.com/items?itemName=SteveCadwallader.CodeMaid)
 * [RainbowBraces](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.RainbowBraces)

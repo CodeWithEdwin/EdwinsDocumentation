@@ -20,21 +20,21 @@ De repository met code kan je importeren.
 Hiermee komen de sources over en de zgn. Tags.
 
 Maak in het bron azure devops project een nieuwe accesstoken aan die **volledige rechten** heeft.
-![PAT_aanmaken](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/PAT_aanmaken.png)
+![PAT_aanmaken](https://codewithedwin.github.io/EdwinsDocumentation/AzureDevops-AzureDevops-Migratie/PAT_aanmaken.png)
 **Onthoud dit token goed!**
 
 Kopieer in de clone url van de bron project:
-![copy_clone_url](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/copy_clone_url.png)
+![copy_clone_url](https://codewithedwin.github.io/EdwinsDocumentation/AzureDevops-AzureDevops-Migratie/copy_clone_url.png)
 
 Ga in het doel project naar Repos:
-![importGit](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/importGit.png)
+![importGit](https://codewithedwin.github.io/EdwinsDocumentation/AzureDevops-AzureDevops-Migratie/importGit.png)
 
 Klik op Import.
 Vul de Clone url in, je gebruikersnaam en het _PersonalAccessToken_.
-![Authenitcate_PAT](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/Authenitcate_PAT.png)
+![Authenitcate_PAT](https://codewithedwin.github.io/EdwinsDocumentation/AzureDevops-AzureDevops-Migratie/Authenitcate_PAT.png)
 
 Klik vervolgens op Import en wacht geduldig af:
-![import](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/import.png)
+![import](https://codewithedwin.github.io/EdwinsDocumentation/AzureDevops-AzureDevops-Migratie/import.png)
 
 # Work Items
 
@@ -90,7 +90,7 @@ Vul in de het custom field ‘ReflectedWorkItemId’ in bij
 
 De tip die hierbij wordt vermeld op [https://nkdagility.com/learn/azure-devops-migration-tools/server-configuration/](https://nkdagility.com/learn/azure-devops-migration-tools/server-configuration/) is:
 
-![ImportRepositoy](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/ReflectedWorkItemId.png)
+![ImportRepositoy](https://codewithedwin.github.io/EdwinsDocumentation/AzureDevops-AzureDevops-Migratie/ReflectedWorkItemId.png)
 
 ### FieldMaps
 
@@ -261,7 +261,7 @@ Op deze manier worden de work items toegevoegd in de volgorde zoals ze ook toege
 In de description in work items kunnen afbeeldingen zijn opgenomen. Om deze juist te migreren dient de instelling aan te staan:
 `"FixHtmlAttachmentLinks": true`
 
-![FixHtmlAttachmentLinks](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/FixHtmlAttachmentLinks.png)
+![FixHtmlAttachmentLinks](https://codewithedwin.github.io/EdwinsDocumentation/AzureDevops-AzureDevops-Migratie/FixHtmlAttachmentLinks.png)
 
 Het betreft hier een beta functie, maar dit levert wel op dat de afbeeldingen ook overgezet worden in de Description.
 
@@ -275,7 +275,7 @@ Bijlagen bij work items worden eerst op schijf opgeslagen uit de bron work item 
 Gebleken is dat work items onjuist overgezet worden op het moment dat de instelling _SkipToFinalRevisedWorkItemType_ aan staat. Alle work items die ooit een keer van type zijn gewijzigd levert fouten op tijdens de migratie. Zet deze instelling daarom uit:
 `"SkipToFinalRevisedWorkItemType": false`
 
-![SkipToFinalRevisedWorkItemType](https://codewithedwin.github.io/EdwinsDocumenation/AzureDevops-AzureDevops-Migratie/SkipToFinalRevisedWorkItemType.png)
+![SkipToFinalRevisedWorkItemType](https://codewithedwin.github.io/EdwinsDocumentation/AzureDevops-AzureDevops-Migratie/SkipToFinalRevisedWorkItemType.png)
 
 
 Dit heeft wel concequenties. Omdat alle history overgezet wordt kan dit betekenen dat je itreaties of Area's die gebruikt zijn maar inmiddels verwijderd handmatig moet aanmaken in het doel Azure Devops project. In de logging van wordt dit op een volgende manier aangegeven:
