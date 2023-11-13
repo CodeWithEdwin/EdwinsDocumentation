@@ -1,3 +1,5 @@
+<< [Home](././index.html)
+
 # Overstappen
 
 Om over te gaan van het Jira ticket systeem naar Azure Devops is het natuurlijk het fijnste als alle Jira-issues ook beschikbaar komen in Azure Devops.
