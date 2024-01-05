@@ -46,6 +46,9 @@
 * [HTML Drag and Drop API](https://www.w3schools.com/html/html5_draganddrop.asp)
 * [Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/)
 
+# Github
+* [Github md files formatting](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+
 # Overig
 
 * [SEI CERT Coding Standards - CERT Secure Coding - Confluence](https://wiki.sei.cmu.edu/confluence/display/seccode/SEI+CERT+Coding+Standards)  
