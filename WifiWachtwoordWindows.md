@@ -4,10 +4,10 @@
 
 Open een commandpompt en toon alle profielen:
 ```
-_netsh wlan show profile_
+netsh wlan show profile
 ```
 
 Van een enkel profiel kan je het wachtwoord dan zo opvragen:
 ```
-_netsh wlan show profile name=[Profile] key=clear | findstr Key_
+netsh wlan show profile name=[Profile] key=clear | findstr Key
 ```
