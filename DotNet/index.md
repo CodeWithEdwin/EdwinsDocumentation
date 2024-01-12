@@ -10,7 +10,7 @@ Uitkomst:
 * True – .Net Framework versie 4.8 is minimaal geïnstalleerd
 * False – .Net Framework versie 4.8 is niet geïnstalleerd
 
-Bron: [Microsoft][https://learn.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed]
+Bron: [Microsoft][https://learn.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)
 
 # IIS installeren voor .NET
 Installeer de web server op de volgende manier: 
