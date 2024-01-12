@@ -8,6 +8,7 @@ Dit is mijn site met documenatie.
 * [Visual Studio](./VisualStudio/index.html)
 * [Testen](./Testen/index.html)
 * [Windows](./Windows/index.html)
+* [.Net](./DotNet/index.html)
 
 # Links
 
