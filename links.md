@@ -8,10 +8,6 @@
 * [Download Log Parser studio - Alternatief](./LogParser/LPSV2.D2.zip)
 * [>50 log parser voorbeelden](https://mlichtenberg.wordpress.com/2011/02/03/log-parser-rocks-more-than-50-examples/)
 
-
-# Visual studio
-
-
 # Javascript
 
 * [Template literals - Template strings - JavaScript - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
@@ -43,6 +39,7 @@
 * [Azure - pipline clients](https://github.com/actions/virtual-environments/)
 
 # Azure devops
+
 * [Wiki markdown](https://learn.microsoft.com/en-us/azure/devops/project/wiki/markdown-guidance?view=azure-devops)
 
 # HTML
