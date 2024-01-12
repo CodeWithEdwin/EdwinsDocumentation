@@ -8,6 +8,8 @@
 
 # Error List 
 Altijd alle meldingen en messages zien:
+```
 Tools > Options, tab Text Editor > C# > Advanced
-Wijzig 'Run background code analysis for' en 'Show compiler errors and warnings for' naar hele solution
+```
+Wijzig `Run background code analysis for` en `Show compiler errors and warnings for` naar hele solution
 
