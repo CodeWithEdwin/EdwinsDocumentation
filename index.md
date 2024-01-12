@@ -9,6 +9,7 @@ Dit is mijn site met documenatie.
 * [Testen](./Testen/index.html)
 * [Windows](./Windows/index.html)
 * [.Net](./DotNet/index.html)
+* [SQL](./SQL/index.html)
 
 # Links
 
