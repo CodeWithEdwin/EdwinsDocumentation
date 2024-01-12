@@ -7,7 +7,7 @@ Dit is mijn site met documenatie.
 * [Migratie Jira - Azure Devops](./Jira-AzureDevops-Migratie/index.html)
 * [Visual Studio](./VisualStudio/index.html)
 * [Testen](./Testen/index.html)
-* [Windows weetjes](./WindowsWeetjes.html)
+* [Windows](./Windows/index.html)
 
 # Links
 
