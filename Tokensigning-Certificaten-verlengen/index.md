@@ -2,7 +2,7 @@
 
 
 Als het token-signing certificaat verlopen is kan de volgende melding getoond worden bij het starten van de website:
-![TokenSigingVerlopen.png](https://codewithedwin.github.io/EdwinsDocumentation/ADFS-validatie/TokenSigingVerlopen.png)
+![TokenSigingVerlopen.png](https://codewithedwin.github.io/EdwinsDocumentation/Tokensigning-Certificaten-verlengen/TokenSigingVerlopen.png)
 
 Als je self-signed certificaten gebruikt kan je deze met PowerShell vernieuwd worden. Dit blijkt overigens alleen te kunnen wanneer de ADFS running is (zie de N.B. onderaan).
 
@@ -10,7 +10,7 @@ Controleren of certificaat verlopen is:
 Voer in een PowerShell (run as administrator) het volgende commando:
 ```Get-ADFSCertificate –CertificateType token-signing```
 Hieronder een voorbeeld:
-![ADFS_CertificaatContole.png](https://codewithedwin.github.io/EdwinsDocumentation/ADFS-validatie/ADFS_CertificaatContole.png)
+![ADFS_CertificaatContole.png](https://codewithedwin.github.io/EdwinsDocumentation/Tokensigning-Certificaten-verlengen/ADFS_CertificaatContole.png)
 
 De Thumbprint die bij CERTIFICATE getoond wordt, dient gebruikt te worden in de web.config.
 **Let op: gebruik de Thumbprint van het certificaat IsPrimary: true.**
