@@ -7,14 +7,14 @@
 # Algemeen
 Uit veiligheidsoogpunt wordt kunnen de certificaten bij het inloggen op de ADFS gecontroleerd worden.
 Deze controles zijn mogenlijk:
-![ADFS validatie opties](https://codewithedwin.github.io/EdwinsDocumentation/Windows/ADFS-validatie_opties.png)
+![ADFS validatie opties](https://codewithedwin.github.io/EdwinsDocumentation/ADFS-validatie/ADFS-validatie_opties.png)
 
 Bron: https://docs.microsoft.com/en-us/dotnet/api/system.servicemodel.security.x509certificatevalidationmode?view=dotnet-plat-ext-5.0
 
 Een Certificaat is alleen valide als:
 Het certificaat uitgegeven is door een Certification authority (CA)
 Het corresonderende root certificaat van de CA is geinstalleerd in Trusted Root Certification Authorities certificate store:
-![image.png](https://codewithedwin.github.io/EdwinsDocumentation/Windows/certificaatStore.png)
+![image.png](https://codewithedwin.github.io/EdwinsDocumentation/ADFS-validatie/certificaatStore.png)
 Standaard is een publieke set van de Trusted Root Certification Authorities certificates opgenomen in Windows die voldoen aan het Microsoft Root Certificate Program. 
 Systeembeheerders kunnen deze standaard set aanpassen en hun eigen CA hier in opnemen.
 
