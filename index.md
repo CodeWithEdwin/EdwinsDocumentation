@@ -11,7 +11,8 @@ Dit is mijn site met documenatie.
 * [Windows](./Windows/index.html)
 * [.Net](./DotNet/index.html)
 * [SQL](./SQL/index.html)
-* [ADFS-certificaat validaties](./Windows/ADFS-validatie.html)
+* [ADFS-certificaat validaties](./ADFS-validatie/index.html)
+* [localStorage-en-sessionStorage](./localStorage-en-sessionStorage/index.html)
 
 # Links
 
