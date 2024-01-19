@@ -1,10 +1,10 @@
 << [Home](https://codewithedwin.github.io/EdwinsDocumentation/)
 
 
-#ADFS
+# ADFS
  = Active Directory Federation Services
 
-#Algemeen
+# Algemeen
 Uit veiligheidsoogpunt wordt kunnen de certificaten bij het inloggen op de ADFS gecontroleerd worden.
 Deze controles zijn mogenlijk:
 ![ADFS validatie opties](https://codewithedwin.github.io/EdwinsDocumentation/Windows/ADFS-validatie_opties.png)
@@ -27,17 +27,17 @@ https://docs.microsoft.com/en-us/windows-hardware/drivers/install/trusted-root-c
 https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.storename?view=net-6.0
 
 -------
-#Opties
+# Opties
 
-##ChainTrust
+## ChainTrust
 Deze optie is de meest vertrouwde methode omdat de keten van certificaten uiteindelijk uit moet komen bij een certificaat dat opgenomen in Trusted Root Certification Authorities certificate store. 
 Mocht het nodig zijn kunnen systeembeheerder zelf ook certificaten toevoegen aan de Trusted Root Certification Authorities certificate store, er is daarmee altijd een mogelijkheid om een certificaat in vertrouwen te nemen.
 
-##PeerTrust
+## PeerTrust
 Voor deze optie geldt dat certificaten alleen als valide worden beschouwd als die aanwezig zijn in de Trusted people store. 
 
 
-##PeerOrChainTrust
+## PeerOrChainTrust
 Dit is de combinatie van ChainTrust en PeerTrust. Of het certificaat wordt vertrouwd als de keten van certificaten uiteindelijk uit komt bij een certificaat dat opgenomen in Trusted Root Certification Authorities 
 certificate store. Of als het certificaat opgenomen is in de Trusted people store.
 
