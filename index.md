@@ -12,7 +12,7 @@ Dit is mijn site met documenatie.
 * [.Net](./DotNet/index.html)
 * [SQL](./SQL/index.html)
 * [ADFS-certificaat validaties](./ADFS-validatie/index.html)
-* [localStorage-en-sessionStorage](./localStorage-en-sessionStorage/index.html)
+* [Tokensigning Certificaten verlengen](./Tokensigning-Certificaten-verlengen/index.html)
 
 # Links
 
