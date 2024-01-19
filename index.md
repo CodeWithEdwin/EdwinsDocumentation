@@ -13,6 +13,7 @@ Dit is mijn site met documenatie.
 * [SQL](./SQL/index.html)
 * [ADFS-certificaat validaties](./ADFS-validatie/index.html)
 * [Tokensigning Certificaten verlengen](./Tokensigning-Certificaten-verlengen/index.html)
+* [Azure webapp timezone](./Azure/WebAppTimezone/index.html)
 
 # Links
 
