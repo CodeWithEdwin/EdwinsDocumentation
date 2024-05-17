@@ -1,6 +1,6 @@
 << [Home](https://codewithedwin.github.io/EdwinsDocumentation/)
 
-# Meerder log files
+# Meerdere log files log4net
 Het is mogelijk om binnen 1 service of client meerdere log files te gebruiken voor specifieke onderdelen, zoals bijv. in de Vos Processor gebruikt wordt. 
 
 Als uitgangspunt nemen we de volgende configuratie om het e.e.a. toe te lichten: 
