@@ -15,6 +15,8 @@ Dit is mijn site met documenatie.
 * [Tokensigning Certificaten verlengen](./Tokensigning-Certificaten-verlengen/index.html)
 * [Azure webapp timezone](./Azure/WebAppTimezone/index.html)
 * [Log4Net](./log4Net/index.html)
+* [Karakterset cmd files](./CmdFiles/index.html)
+
 
 # Links
 
