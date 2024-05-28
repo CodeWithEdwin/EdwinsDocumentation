@@ -216,3 +216,71 @@ steps:
     thresholdHigh: '0'
     thresholdMedium: '10'
 ```
+
+
+# Dependency zoeken
+Het kan soms lastig zijn om na te gaan in welk project het vulnerable package staat.
+Soms kan je dit in Visual Studio niet herleiden omdat het vulnerable package een onderdeel is van een ander package.
+Dit kan recursief meerdere lagen diep zitten:
+
+-- Package 1 (gebruikt in project)
+---- Package 2
+------ Package 3
+--------- Package 4 (vulnerable package)
+
+Om toch te onderzoeken in welke projecten het package gebruikt wordt is het handig om een zgn. bom file per project te laten genereren. Zodat je kan onderzoeken (bijv. met [Agent Ransack](https://www.mythicsoft.com/agentransack/)) in welke projecten het vulnerabile package voor komt.
+
+Sla onderstaand script op als *.cmd bestand in een map vanwaar het script zelf recursief (dus dieper) alle *.csproj en *.vbproj files kan vinden.
+Bij het starten van onderstaand *.cmd script geeft je op in welke map alle bom files terecht moeten komen. 
+Per project krijg je dan daar de *.json files te staan. De naam van het json-bestand is de naam van het projectfile bestand waarbij alle punten vervangen zijn door underscores: _mijn.project.csproj_ wordt _mijn_project_csproj.json_.
+
+Het cmd script:
+```
+@echo off
+setlocal EnableDelayedExpansion
+
+SET /p outputdir="Output directory: "
+
+ECHO ********* INSTALL CycloneDX *********
+dotnet tool install --global CycloneDX
+
+ECHO ********* UPDATE CycloneDX *********
+dotnet tool update --global CycloneDX
+
+if exist "%outputdir%" del "%outputdir%" /q
+if exist projects.out del projects.out /q
+
+dir "*.csproj" /S /B >> projects.out
+dir "*.vbproj" /S /B >> projects.out
+
+for /F " " %%i in (projects.out) do (
+	call :GetFileName %%i	 	
+	ECHO.
+	ECHO.
+	ECHO ********* !FileName! *********
+	SET filename=!FileName:.=_!
+	::disable the github lincense, so it will not fail on "GitHub API rate limit exceeded"
+	dotnet CycloneDX "%%i" -o "%outputdir%" -j -dgl
+	ren  "%outputdir%\bom.json" "!filename!.json"
+)
+
+del projects.out
+
+ECHO.
+ECHO.
+ECHO.
+ECHO.
+ECHO ********* DONE *********
+pause
+
+Goto :EOF
+
+
+:GetFileName
+Set filename=%1
+For %%A in ("%filename%") do (
+    Set FileName=%%~nxA
+)
+Goto :EOF
+```
+
