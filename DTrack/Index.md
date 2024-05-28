@@ -49,13 +49,12 @@ Er wordt een analyse uitgevoerd door [CycloneDX](https://github.com/CycloneDX) o
 ## DTrack gebruiken
 ---
 DTrack bestaat uit een webportal en API waarbij de portal dashboards heeft met informatie over het project en de API gebruikt kan worden voor het integreren in DevOps-straten e.d.. Voor het gebruik van de API is een API key nodig.
-Om toegang tot DTrack te krijgen dient men eenmalig met het  account in te loggen via zonder iets in te vullen en te klikken op:
-![image.png](/.attachments/image-c2a9596a-19ab-4e25-bf67-4db19a9fdd7c.png) 
+Om toegang tot DTrack te krijgen dient men eenmalig met het  account in te loggen.
+
 **Na de redirect zal binnen 1 sec het dashboard getoond worden.**
 Vervolgens dient een project aangevraagd te worden. Geef hierbij aan om welk project en klant het gaat (Klant.Project) en of een API key gewenst is. De aanvrager zal direct rechten krijgen op het project en krijgt een Project Guid + Api key retour. Mochten andere teamleden bij het dashboard moeten kunnen dan kunnen zijn ook eenmalig inloggen en rechten op het project via [Ordina BPS DevOps](mailto:devops@ordina.nl) aanvragen. Als de bevestiging van de aanvraag terug komt bij de aanvrager kan het mogelijk zijn dat men opnieuw moet inloggen om de nieuwe projecten te zien.
 
-Naast het integreren in DevOps straten is het ook mogelijk om handmatig een SBOM file te uploaden:
-![image.png](/.attachments/image-8e9d675c-5142-4eda-bd59-e50fbd8b81d6.png)
+Naast het integreren in DevOps straten is het ook mogelijk om handmatig een SBOM file te uploaden.
 
 
 ### Alarmering en scanning
