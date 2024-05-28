@@ -1,12 +1,10 @@
 << [Home](https://codewithedwin.github.io/EdwinsDocumentation/)
 
 Volledige documentatie is te vinden via [Dependency Track docs](https://docs.dependencytrack.org/).
-[[_TOC_]]
 
 ## Inleiding
 ----
-Voor het scannen van packages binnen de broncode heeft Ordina BPS [Dependency Track](https://dependencytrack.org/) geïntroduceerd. Dependency Track (DTrack) zorgt voor het scannen op vulnerabilities van gebruikte client en back-end libraries binnen de broncode. 
-Deze tool kan een vervanging zijn voor [OWASP Dependency Check](/BPS-WIKI/Microsoft/OWASP-Dependency-Check) + [WhiteSource Bolt](/BPS-WIKI/Microsoft/WhiteSource-Bolt-\(Deprecated\)).
+Voor het scannen van packages binnen de broncode is [Dependency Track](https://dependencytrack.org/) geschikt. Dependency Track (DTrack) zorgt voor het scannen op vulnerabilities van gebruikte client en back-end libraries binnen de broncode. 
 
 ## Belangrijk om te weten
 ---
@@ -30,7 +28,7 @@ Pas als een vulnerability ook daadwerkelijk bekend is een van de onderstaande za
 ### Known Issues
 ----
 
-- Het dashboard (https://dtrack.ordina.nl/dashboard) toont meer informatie dan alleen de projecten waar je voor geautoriseerd bent e.g. een totale portfolio view. Dit kan verwarrend zijn omdat de getallen veel hoger kunnen zijn dan verwacht, het is dus een totaal van alle projecten. Oplossing; Navigeren naar een specifiek project zorgt voor een dashboard voor het betreffende project. **_[Fix in volgende release]_**
+- Het dashboard toont meer informatie dan alleen de projecten waar je voor geautoriseerd bent e.g. een totale portfolio view. Dit kan verwarrend zijn omdat de getallen veel hoger kunnen zijn dan verwacht, het is dus een totaal van alle projecten. Oplossing; Navigeren naar een specifiek project zorgt voor een dashboard voor het betreffende project. **_[Fix in volgende release]_**
 
 
 ## Hoe werkt het?
@@ -51,10 +49,10 @@ Er wordt een analyse uitgevoerd door [CycloneDX](https://github.com/CycloneDX) o
 ## DTrack gebruiken
 ---
 DTrack bestaat uit een webportal en API waarbij de portal dashboards heeft met informatie over het project en de API gebruikt kan worden voor het integreren in DevOps-straten e.d.. Voor het gebruik van de API is een API key nodig.
-Om toegang tot DTrack te krijgen dient men eenmalig met het @ordina.nl account in te loggen via [DTrack Ordina](https://dtrack.ordina.nl) zonder iets in te vullen en te klikken op:
+Om toegang tot DTrack te krijgen dient men eenmalig met het  account in te loggen via zonder iets in te vullen en te klikken op:
 ![image.png](/.attachments/image-c2a9596a-19ab-4e25-bf67-4db19a9fdd7c.png) 
 **Na de redirect zal binnen 1 sec het dashboard getoond worden.**
-Vervolgens dient via [Ordina BPS DevOps](mailto:devops@ordina.nl) een project aangevraagd te worden. Geef hierbij aan om welk project en klant het gaat (Klant.Project) en of een API key gewenst is. De aanvrager zal direct rechten krijgen op het project en krijgt een Project Guid + Api key retour. Mochten andere teamleden bij het dashboard moeten kunnen dan kunnen zijn ook eenmalig inloggen en rechten op het project via [Ordina BPS DevOps](mailto:devops@ordina.nl) aanvragen. Als de bevestiging van de aanvraag terug komt bij de aanvrager kan het mogelijk zijn dat men opnieuw moet inloggen om de nieuwe projecten te zien.
+Vervolgens dient een project aangevraagd te worden. Geef hierbij aan om welk project en klant het gaat (Klant.Project) en of een API key gewenst is. De aanvrager zal direct rechten krijgen op het project en krijgt een Project Guid + Api key retour. Mochten andere teamleden bij het dashboard moeten kunnen dan kunnen zijn ook eenmalig inloggen en rechten op het project via [Ordina BPS DevOps](mailto:devops@ordina.nl) aanvragen. Als de bevestiging van de aanvraag terug komt bij de aanvrager kan het mogelijk zijn dat men opnieuw moet inloggen om de nieuwe projecten te zien.
 
 Naast het integreren in DevOps straten is het ook mogelijk om handmatig een SBOM file te uploaden:
 ![image.png](/.attachments/image-8e9d675c-5142-4eda-bd59-e50fbd8b81d6.png)
@@ -66,14 +64,6 @@ DTrack doet een actieve scan van alle projecten op basis van informatie uit de v
 - Bij het uitvoeren van een scan zoals met een pipeline.
 - Gedurende de dag; dit betekent dat de SBOM file die in het systeem staat continue gecontroleerd wordt. Op het moment dat er een nieuwe vulnerability geplaatst wordt in 1 van de bronnen zal DTrack dit matchen met alle projecten en automatisch alerts versturen per mail.
 
-### Reporting
----
-DTrack heeft op dit moment geen export mogelijkheid t.b.v. rapportages. Hiervoor is een tool voor geschreven die als volgt gebruikt kan worden via de browser:
-  - URL aanpassen en in de browser plakken. Binnen 10 sec zal het rapport als .html file gedownload worden:
-     - https://ordina-devops-func.azurewebsites.net/api/DTrackReporting?DtrackApiKey=APIKEY&DTrackProjectKey=PROJECTKEY
-        - Vervang APIKEY & PROJECTKEY met de waarden die als reactie op de aanvraag van een project zijn verstuurd.
-        - 10 sec is een richttijd, als er veel vulnerabilities zijn dan kan dit langer duren.
-        - Voorbeeld Url: https://ordina-devops-func.azurewebsites.net/api/DTrackReporting?DtrackApiKey=Fjsjf847500e94&DTrackProjectKey=6578-48730-438574-439876547
 
 ### SBOM genereren
 ---
@@ -116,7 +106,7 @@ Upload van SBOM naar DTrack kan op verschillende manieren:
           $filecontent = Get-Content ("C:\Temp\CycloneDX\sbomall.json") –Raw
           $ProjectGuid = "ProjectGuid"
           $ApiKey = "API KEY"
-          $Uri = "https://dtrackapi.ordina.nl"
+          $Uri = "{URL Dtrack}"
       
           $Body = ([PSCustomObject] @{
                   project = $ProjectGuid
@@ -141,7 +131,7 @@ De DevOps [extensie](https://marketplace.visualstudio.com/items?itemName=GSoft.d
     bomFilePath: '$(System.DefaultWorkingDirectory)\CycloneDX\sbomall.json'
     dtrackProjId: 'ProjectGuid'
     dtrackAPIKey: 'API KEY'
-    dtrackURI: 'https://dtrackapi.ordina.nl'
+    dtrackURI: '{URL Dtrack}'
     thresholdCritical: '0'
     thresholdHigh: '0'
     thresholdMedium: '10'
@@ -222,7 +212,7 @@ steps:
     bomFilePath: '$(System.DefaultWorkingDirectory)\CycloneDX\sbomall.json'
     dtrackProjId: 'ProjectGuid'
     dtrackAPIKey: 'API Key'
-    dtrackURI: 'https://dtrackapi.ordina.nl'
+    dtrackURI: '{URL Dtrack}'
     thresholdCritical: '0'
     thresholdHigh: '0'
     thresholdMedium: '10'
