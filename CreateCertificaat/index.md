@@ -1,11 +1,5 @@
 << [Home](https://codewithedwin.github.io/EdwinsDocumentation/)
 
-# Algemeen
-De AAG heeft voor het valideren van de BSN-JWT die de MADStub terug geeft een certificaat nodig met een Public key.
-De MADStub moet de Private key hebben om het BSN-JWT aan te kunnen maken. Hier staat beschreven hoe je een private key kunt aanmaken met het bij behorende certificaat.
-
-Het certificaat moet je vervolgens installeren in de Certificaat store van Windows. De Thumbprint van het certificaat moet in de AAG opgenomen worden in de appsettings.
-
 # Certificaat maken
 
 ## 1. Openssl op VDI
