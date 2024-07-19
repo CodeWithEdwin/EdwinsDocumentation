@@ -12,6 +12,38 @@ Extension method:
     }
 ```
 
+```
+[ExcludeFromCodeCoverage]
+internal static class DictionaryTestExtension
+{
+    internal static bool Compare(this object valueA, Dictionary<string, object> scope) =>
+        valueA is Dictionary<string, string> dicA1
+        ? dicA1.Compare(scope)
+        : valueA is Dictionary<string, object> dicA2 && dicA2.Compare(scope);
+
+    internal static bool Compare(this Dictionary<string, string> dicA, Dictionary<string, object> dicB) =>
+        dicA.All(a => dicB.Any(b => a.Compare(b)))
+        && dicB.All(b => dicA.Any(a => a.Compare(b)));
+
+    internal static bool Compare(this KeyValuePair<string, string> kvpA, KeyValuePair<string, object> kpvB) =>
+        kpvB.Value is string strValueB && strValueB.Equals(kvpA.Value) && kvpA.Key.Equals(kpvB.Key);
+
+    internal static bool Compare(this Dictionary<string, object> dicA, Dictionary<string, object> dicB) =>
+        dicA.All(a => dicB.Any(b => a.Compare(b)))
+        && dicB.All(b => dicA.Any(a => a.Compare(b)));
+
+    internal static bool Compare(this KeyValuePair<string, object> kvpA, KeyValuePair<string, object> kvpB) =>
+        kvpB.Value is string strValueB && kvpA.Value is string strValueA
+        ? strValueB.Equals(strValueA) && kvpA.Key.Equals(kvpB.Key)
+        : kvpB.Value is List<string> lstB && kvpA.Value is List<string> lstA
+        && kvpA.Key.Equals(kvpB.Key) && lstA.Compare(lstB);
+
+    internal static bool Compare(this List<string> dicA, List<string> dicB) =>
+        dicA.All(a => dicB.Any(b => b.Equals(a)))
+        && dicB.All(b => dicA.Any(a => a.Equals(b)));
+}
+
+```
 
 ## Validate logging
 
