@@ -6,7 +6,7 @@ Dit is mijn site met documenatie.
 * [Migratie Azure Devops - Azure Devops](./AzureDevops-AzureDevops-Migratie/index.html)
 * [Migratie Jira - Azure Devops](./Jira-AzureDevops-Migratie/index.html)
 * [Visual Studio](./VisualStudio/index.html)
-* [C# code](./C#Code/index.html)
+* [C# code](./CsharpCode/index.html)
 * [Web Deploy](./Webdeploy/index.html)
 * [Testen](./Testen/index.html)
 * [Unittesten](./Unittesten/index.html)
