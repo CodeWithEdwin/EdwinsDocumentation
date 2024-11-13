@@ -2,14 +2,18 @@
 
 # Logging
 ## Validate Scope
-
-Extension method:
 ```
-  internal static void ValidateScope<T>(this Mock<ILogger<T>> logger, Dictionary<string, object> scope)
-    {
-        var invocationScopeCount = logger.Invocations.Count(i => i.Arguments.Any(i1 => i1.Compare(scope)));
-        Assert.AreEqual(1, invocationScopeCount);
-    }
+_mockLogger.Verify(l => l.BeginScope(It.Is<It.IsAnyType>((o, t) =>
+				((IReadOnlyDictionary<string, string>)o).Count == 7
+				&& ((IReadOnlyDictionary<string, string>)o).Contains(new KeyValuePair<string, string>("RequestId", "unknown"))
+				&& ((IReadOnlyDictionary<string, string>)o).Contains(new KeyValuePair<string, string>("AppVersion", "unknown"))
+				&& ((IReadOnlyDictionary<string, string>)o).Contains(new KeyValuePair<string, string>("BatchId", "unknown"))
+				&& ((IReadOnlyDictionary<string, string>)o).Contains(new KeyValuePair<string, string>("UserAgent", "unknown"))
+				&& ((IReadOnlyDictionary<string, string>)o).Contains(new KeyValuePair<string, string>("Mad-Session-Id-DateTime", "unknown"))
+				&& ((IReadOnlyDictionary<string, string>)o).Contains(new KeyValuePair<string, string>("Platform", "unknown"))
+				&& ((IReadOnlyDictionary<string, string>)o).ContainsKey("X-Correlation-ID")
+			)), Times.Exactly(1));
+
 ```
 
 ```
@@ -49,13 +53,40 @@ internal static class DictionaryTestExtension
 
 Extension method:
 ```
-    internal static void Validate<T>(this Mock<ILogger<T>> logger, LogLevel logLevel, string message)
-    {
-        var invocationsWithMessageCount = logger.Invocations.Count(i =>
-            i.Arguments.Contains(logLevel) &&
-            ((IReadOnlyList<KeyValuePair<string, object>>)i.Arguments[2]).Contains(
-                new KeyValuePair<string, object>("{OriginalFormat}", message)));
+/// <summary>
+/// Verify logging
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="mockLog"></param>
+/// <param name="logLevel"></param>
+/// <param name="logMessageWithPlaceHolder">Use placeholder '%' for unkown variables</param>
+/// <param name="exceptionMessage"></param>
+public static void VerifyLogging<T>(
+	this Mock<ILogger<T>> mockLog,
+	LogLevel logLevel,
+	string logMessageWithPlaceHolder,
+	string exceptionMessage = "none") =>
+		mockLog.Verify(x =>
+			x.Log(logLevel,
+				  It.IsAny<EventId>(),
+				  It.Is<It.IsAnyType>((o, t) => CheckLogmessageparts(o.ToString() ?? string.Empty, logMessageWithPlaceHolder)),
+				  It.Is<Exception>(ex => exceptionMessage == "none" || ex.Message.Contains(exceptionMessage)),
+				  (Func<It.IsAnyType, Exception?, string>)
+				  It.IsAny<object>())
+			, Times.Once);
 
-        Assert.AreEqual(1, invocationsWithMessageCount);
-    }
+private static bool CheckLogmessageparts(string toCheck, string logMessageWithPlaceHolder)
+{
+	var logMessageParts = logMessageWithPlaceHolder.Split("%");
+	foreach (var str in logMessageParts)
+	{
+		if (!toCheck.Contains(str))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
 ```
