@@ -65,3 +65,4 @@
 * [IIS W3C Logging Documentatie](https://docs.microsoft.com/en-us/windows/win32/http/w3c-logging)
 * [iis 7 - How do I change the physical path of web site in IIS7 with APPCMD? - Stack Overflow](https://stackoverflow.com/questions/1619308/how-do-i-change-the-physical-path-of-web-site-in-iis7-with-appcmd)
 * [Map SQL Server Profiler EventClass ID to its name in a saved trace table - Mladen Prajdić Blog](https://weblogs.sqlteam.com/mladenp/2007/11/09/map-sql-server-profiler-eventclass-id-to-its-name-in/)
+* [GitHub: Poormans TSQL Formatter](https://github.com/TaoK/PoorMansTSqlFormatter)
