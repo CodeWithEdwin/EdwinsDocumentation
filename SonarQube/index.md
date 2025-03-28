@@ -84,3 +84,11 @@ We zetten de _Check for comment resolution_ aan en selecteren _Required_.
 
 ## Afronden
 Gooi de pull request weg en zo ook de aangemaakte branche. Deze zijn nu niet meer nodig.
+
+## Backdating
+Als er updates uitgevoerd worden aan Sonarqube kan het zo zijn dat er aanpassingen komen aan de Quality Profiles. Dit kan dan zorgen voor dat nieuwe bevindingen niet in de new code - de delta - te zien zijn, maar wel in het totaal overzicht. Dit komt door backdating.
+
+Backdating is simpel gezegd de creation datetime van nieuwe sonarqube bevindingen zetten op het tijdstip van laatste wijziging van de betreffende regel code.
+
+[Sonarqube.org: Uitleg backdating versie 7.9](https://docs.sonarqube.org/7.9/user-guide/issues/#header-4)
+[Sonarqube.ordina.nl: Uitleg backdating](https://sonarqube.ordina.nl/documentation/user-guide/issues/#understanding-issue-backdating)
