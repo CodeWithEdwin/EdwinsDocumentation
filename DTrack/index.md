@@ -52,10 +52,10 @@ DTrack bestaat uit een webportal en API waarbij de portal dashboards heeft met i
 Om toegang tot DTrack te krijgen dient men eenmalig met het  account in te loggen.
 
 **Na de redirect zal binnen 1 sec het dashboard getoond worden.**
-Vervolgens dient een project aangevraagd te worden. Geef hierbij aan om welk project en klant het gaat (Klant.Project) en of een API key gewenst is. De aanvrager zal direct rechten krijgen op het project en krijgt een Project Guid + Api key retour. Mochten andere teamleden bij het dashboard moeten kunnen dan kunnen zijn ook eenmalig inloggen en rechten op het project via [Ordina BPS DevOps](mailto:devops@ordina.nl) aanvragen. Als de bevestiging van de aanvraag terug komt bij de aanvrager kan het mogelijk zijn dat men opnieuw moet inloggen om de nieuwe projecten te zien.
+Vervolgens dient een project aangevraagd te worden. Geef hierbij aan om welk project en klant het gaat (Klant.Project) en of een API key gewenst is. De aanvrager zal direct rechten krijgen op het project en krijgt een Project Guid + Api key retour. 
+Mochten andere teamleden bij het dashboard moeten kunnen dan kunnen zijn ook eenmalig inloggen en rechten op het project aanvragen. Als de bevestiging van de aanvraag terug komt bij de aanvrager kan het mogelijk zijn dat men opnieuw moet inloggen om de nieuwe projecten te zien.
 
 Naast het integreren in DevOps straten is het ook mogelijk om handmatig een SBOM file te uploaden.
-
 
 ### Alarmering en scanning
 ---
@@ -64,9 +64,27 @@ DTrack doet een actieve scan van alle projecten op basis van informatie uit de v
 - Gedurende de dag; dit betekent dat de SBOM file die in het systeem staat continue gecontroleerd wordt. Op het moment dat er een nieuwe vulnerability geplaatst wordt in 1 van de bronnen zal DTrack dit matchen met alle projecten en automatisch alerts versturen per mail.
 
 
+### Common Vulnerability Scoring Sytem (CVSS)
+---
+In Dependency-track worden enkele scores weer gegeven. Hier volgt een korte uitleg van deze scores.
+
+#### CVSS Base Score
+---
+Geeft in een cijfer weer wat de karakteristieken zijn, inherent aan de kwetsbaarheid en in de loop der tijd niet wijzigen.
+Dit is de score om naar te kijken. Op basis van dit cijfer wordt de Severity bepaald.
+
+#### CVSS Exploitability SubScore
+---
+Geeft aan hoe kwetsbaar het is, hoe hoger het cijfer hoe makkelijker te misbruiken
+
+#### CVSS Impact Subscore
+---
+Geeft in een cijfer de impact weer als de kwetsbaarheid misbruikt is
+
+
 ### SBOM genereren
 ---
-Project X is een NPM project en project Y is een .NET project. Om SBOM files te genereren dienen de volgende 3 stappen uitgevoerd te worden dit kan handmatig of in een pipeline zoals in [Azure DevOps full yml](https://dev.azure.com/OrdinaBPSColab/BPS.Maatwerk/_wiki/wikis/BPS.Maatwerk.wiki?wikiVersion=GBwikiMaster&_a=edit&pagePath=/BPS%20WIKI/Microsoft/Dependency%20Track&pageId=55&anchor=volledig-azure-devops-yml-voorbeeld).
+Project X is een NPM project en project Y is een .NET project. Om SBOM files te genereren dienen de volgende 3 stappen uitgevoerd te worden dit kan handmatig of in een pipeline.
 
 **1. Project X - NPM project**
 - Restore packages:
@@ -90,7 +108,7 @@ Project X is een NPM project en project Y is een .NET project. Om SBOM files te 
      `dotnet CycloneDX "{Path}" -o C:\Temp\CycloneDX\CycloneDX\sln -j`
 
 **3. Combineer SBOM files Project X en Project Y**
-- Download en installeer de [CycloneDX-CLI tool](https://dtrackordinasa.blob.core.windows.net/cyclonedx-cli/cyclonedx.exe?sp=r&st=2021-12-06T10:28:49Z&se=2030-12-06T18:28:49Z&spr=https&sv=2020-08-04&sr=b&sig=mU0T4oq8iKSuX6d0HVn7NJ7CJi8sVjSodfyF07IXZIs%3D)
+- Download en installeer de CycloneDX-CLI tool
 - Merge alle bestanden die ingevoerd zijn tot 1 SBOM file:
   `cyclonedx.exe merge --input-files C:\Temp\CycloneDX\bomNpmProj.json C:\Temp\CycloneDX\sln\bom.json --output-file C:\Temp\CycloneDX\sbomall.json`
 
@@ -122,7 +140,7 @@ Upload van SBOM naar DTrack kan op verschillende manieren:
 ```
 
 **Azure DevOps Pipeline**
-De DevOps [extensie](https://marketplace.visualstudio.com/items?itemName=GSoft.dependency-track-vsts) kan als task in de pipeline opgenomen worden. Genereer eerst de SBOM file zoals beschreven bij [SBOM genereren](https://dev.azure.com/OrdinaBPSColab/BPS.Maatwerk/_wiki/wikis/BPS.Maatwerk.wiki?wikiVersion=GBwikiMaster&pagePath=/BPS%20WIKI/Microsoft/Dependency%20Track&pageId=55&_a=edit#sbom-genereren).
+De DevOps [extensie](https://marketplace.visualstudio.com/items?itemName=GSoft.dependency-track-vsts) kan als task in de pipeline opgenomen worden. Genereer eerst de SBOM file zoals beschreven bij SBOM genereren.
 ```
 ~~~~~
 - task: upload-bom-dtrack-task@1
@@ -284,3 +302,30 @@ For %%A in ("%filename%") do (
 Goto :EOF
 ```
 
+### Failure while uploading SBOM to Dependency Track
+Symptoms:
+
+- `ERR_NON_2XX_3XX_RESPONSE`
+- `Uncaught internal server error`
+- `javax.ws.rs.NotSupportedException: HTTP 415 Unsupported Media Type` (in server logs)
+
+> See [Dependency Track docs > Continuous Integration & Delivery](https://docs.dependencytrack.org/usage/cicd/#large-payloads)
+
+#### Possible cause:
+Incorrect Content-Type specified while uploading file-based SBOM.
+Dependency Track (`v4.7.0`) does not perform adequate input validation, resulting in a 500 response.
+
+#### Fix
+Use `application/json` as content-type.
+Example:
+```bash
+curl -X "PUT" "https://[DtrackUrl]/api/v1/bom" \
+     -F "project=MYPROJECTID" \
+     -H "Content-Type: application/json" \
+     -H "X-API-Key: MYAPIKEY" 
+     -F bom=@./mybom.json
+```
+
+##Links
+---
+[Common Vulnerability Scoring System Version 3.1](https://www.first.org/cvss/v3-1/)
