@@ -328,6 +328,6 @@ curl -X "PUT" "https://[DtrackUrl]/api/v1/bom" \
      -F bom=@./mybom.json
 ```
 
-##Links
+## Links
 ---
 [Common Vulnerability Scoring System Version 3.1](https://www.first.org/cvss/v3-1/)
