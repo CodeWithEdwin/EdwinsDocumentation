@@ -1,4 +1,4 @@
-[[_TOC_]]
+<< [Home](https://codewithedwin.github.io/EdwinsDocumentation/)
 
 # Toelichting
 ---
