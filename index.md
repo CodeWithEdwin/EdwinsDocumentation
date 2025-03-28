@@ -21,7 +21,7 @@ Dit is mijn site met documenatie.
 * [DependencyTrack](./DTrack/index.html)
 * [(Test) Certificaat maken](./CreateCertificaat/index.html)
 * [SonarQube](./SonarQube/index.html)
-
+* [LogParser](./LogParser/index.html)
 
 # Links
 
