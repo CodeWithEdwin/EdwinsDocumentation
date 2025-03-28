@@ -110,7 +110,9 @@ Project X is een NPM project en project Y is een .NET project. Om SBOM files te 
 **3. Combineer SBOM files Project X en Project Y**
 - Download en installeer de CycloneDX-CLI tool
 - Merge alle bestanden die ingevoerd zijn tot 1 SBOM file:
-  `cyclonedx.exe merge --input-files C:\Temp\CycloneDX\bomNpmProj.json C:\Temp\CycloneDX\sln\bom.json --output-file C:\Temp\CycloneDX\sbomall.json`
+  ```
+  cyclonedx.exe merge --input-files C:\Temp\CycloneDX\bomNpmProj.json C:\Temp\CycloneDX\sln\bom.json --output-file C:\Temp\CycloneDX\sbomall.json
+  ```
 
 
 ### SBOM uploaden naar DTrack
