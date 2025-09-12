@@ -1,7 +1,7 @@
 << [Home](https://codewithedwin.github.io/EdwinsDocumentation/)
 
 
-# ReqNRoll datumformaat
+# ReqNRoll datum template
 Het mogelijk om het datums te gaan rekenen vanaf het nu (heden).
 Zo lopen de ReqNRoll testen nooit achter.
 
