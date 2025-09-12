@@ -5,9 +5,12 @@
 Het mogelijk om het datums te gaan rekenen vanaf het nu (heden).
 Zo lopen de ReqNRoll testen nooit achter.
 
-In plaats van:
+In plaats van: 
+
 `Gegeven een burger met geboortedatum 15-03-2000`
+
 OF
+
 ```
 Gegeven de volgende burgers:
 | Naam        | Geboortedatum |
@@ -18,7 +21,9 @@ Gegeven de volgende burgers:
 Nu staan de geboortedatums altijd vast, deze persoon wordt in de testen ook elk jaar ouder.
 Stel je wilt juist een test voor een persoon die 25 en 10 jaar is. Dan je ook zeggen:
 `Gegeven een burger met geboortedatum 15-03-(YYYY-25)`
+
 OF
+
 ```
 Gegeven de volgende burgers:
 | Naam        | Geboortedatum |
@@ -94,6 +99,8 @@ Stel vandaag is het 20-07-2025 dan geldt:
 # Code
 
 ## Helper class
+Dit is de class die alle datum templates om kan zetten naar echte datums.
+
 ```
 using System.Globalization;
 using System.Text.RegularExpressions;
@@ -245,6 +252,8 @@ public partial class DateFormatHelper
 ```
 
 ## DateOnlyValueRetriever class
+Dit is een retreiver om datum templates om te zetten naar enkel datums (dus zonder tijd).
+Er is op dit moment (september 2025) geen default ReqNRoll DateOnly retreiver, daarom is deze custom.
 ```
 internal class DateOnlyValueRetriever : IValueRetriever
 {
@@ -265,6 +274,8 @@ internal class DateOnlyValueRetriever : IValueRetriever
 ```
 
 ## GenericRetriever class
+In reqNRoll zijn standaard retreivers aanwezig, deze class zorgt dat die default retreivers om kunnen gaan met de datum templates.
+
 ```
 /// <summary>
 /// Generic retreiver die een standaard retreiver gebruikt en daaroverheen nog gebruik maakt van de datumformaat conversie
@@ -288,7 +299,9 @@ public partial class GenericRetriever<Retreiver> : IValueRetriever where Retreiv
 ```
 
 ## BeforeScenario Hook
-
+Dit is de hook om te zorgen dat alles om kan gaan met de datum templates.
+Eerst moeten de default retreivers verwijderd worden om vervolgens de aangepaste varianten toe te voegen.
+Deze retreivers kunnen dan het datum template ondersteunen.
 ```
 /// <summary>
 /// Hook om alle valueRetreivers aan te passen vanwege het te gebruiken datumformaat
