@@ -20,6 +20,7 @@ Gegeven de volgende burgers:
 
 Nu staan de geboortedatums altijd vast, deze persoon wordt in de testen ook elk jaar ouder.
 Stel je wilt juist een test voor een persoon die 25 en 10 jaar is. Dan je ook zeggen:
+
 `Gegeven een burger met geboortedatum 15-03-(YYYY-25)`
 
 OF
