@@ -5,7 +5,7 @@
 Het mogelijk om het datums te gaan rekenen vanaf het nu (heden).
 Zo lopen de ReqNRoll testen nooit achter.
 
-In plaats van: 
+Zo doe je normaal:
 
 `Gegeven een burger met geboortedatum 15-03-2000`
 
