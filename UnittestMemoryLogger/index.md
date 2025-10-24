@@ -21,7 +21,7 @@ using var _ = _logger.BeginScope(new Dictionary<string, object>
 Dan kun je deze niet testen met een Mock, die ondersteunt dit niet.
 Met de zgn [Fakelogger](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.testing.fakelogger-1?view=net-9.0-pp) kunnen deze properties ook niet uitgelezen worden:
 
-![image.png](https://codewithedwin.github.io/EdwinsDocumentation/UnittestLogging/FakeLogger.png)
+![image.png](https://codewithedwin.github.io/EdwinsDocumentation/UnittestMemoryLogger/FakeLogger.png)
 
 Daarvoor kun je dit testen door de logging op te vangen in een class en deze vervolgens te gaan testen.
 Dat gaat op de volgende manier
@@ -184,4 +184,4 @@ public class MemoryLoggerHelper
  }
 ```
 
-![image.png](https://codewithedwin.github.io/EdwinsDocumentation/UnittestLogging/WatchMemoryLogger.PNG)
+![image.png](https://codewithedwin.github.io/EdwinsDocumentation/UnittestMemoryLogger/WatchMemoryLogger.PNG)
