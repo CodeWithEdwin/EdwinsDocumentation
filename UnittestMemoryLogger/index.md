@@ -1,7 +1,6 @@
 << [Home](https://codewithedwin.github.io/EdwinsDocumentation/)
 
 # SeriLog Logging unittesten
-
 Als je in de code properties toevoegd aan de logging zoals hieronder:
 
 `using var _ = LogContext.PushProperty("Regel", lineNumber);`
@@ -20,6 +19,10 @@ using var _ = _logger.BeginScope(new Dictionary<string, object>
 ```
 
 Dan kun je deze niet testen met een Mock, die ondersteunt dit niet.
+Met de zgn [Fakelogger](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.testing.fakelogger-1?view=net-9.0-pp) kunnen deze properties ook niet uitgelezen worden:
+
+![image.png](https://codewithedwin.github.io/EdwinsDocumentation/UnittestLogging/FakeLogger.png)
+
 Daarvoor kun je dit testen door de logging op te vangen in een class en deze vervolgens te gaan testen.
 Dat gaat op de volgende manier
 
