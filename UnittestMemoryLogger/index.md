@@ -3,11 +3,14 @@
 # SeriLog Logging unittesten
 Als je in de code properties toevoegd aan de logging zoals hieronder:
 
-`using var _ = LogContext.PushProperty("Regel", lineNumber);`
-
+```
+using var _ = LogContext.PushProperty("Regel", lineNumber);
+```
 OF 
 
-`using var temp = LogContext.PushProperty("ResponseHttpStatusCode", httpStatusCode);`
+```
+using var temp = LogContext.PushProperty("ResponseHttpStatusCode", httpStatusCode);
+```
 
 OF
 
