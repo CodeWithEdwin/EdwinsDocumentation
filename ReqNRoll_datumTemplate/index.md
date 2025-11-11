@@ -1,5 +1,6 @@
 << [Home](https://codewithedwin.github.io/EdwinsDocumentation/)
 
+<small>Bron:[ronaldbosma.github.io/blog](https://ronaldbosma.github.io/blog/2024/07/17/reqnroll-parsable-value-retriever-and-comparer/)</small>
 
 # ReqNRoll datum template
 Het mogelijk om het datums te gaan rekenen vanaf het nu (heden).
