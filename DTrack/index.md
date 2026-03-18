@@ -279,8 +279,7 @@ for /F " " %%i in (projects.out) do (
 	ECHO.
 	ECHO ********* !FileName! *********
 	SET filename=!FileName:.=_!
-	::disable the github lincense, so it will not fail on "GitHub API rate limit exceeded"
-	dotnet CycloneDX "%%i" -o "%outputdir%" -j -dgl
+	dotnet CycloneDX "%%i" -o "%outputdir%" -F json
 	ren  "%outputdir%\bom.json" "!filename!.json"
 )
 
