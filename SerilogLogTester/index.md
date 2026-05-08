@@ -24,16 +24,16 @@ using var _ = _logger.BeginScope(new Dictionary<string, object>
 Dan kun je deze niet testen met een Mock, die ondersteunt dit niet.
 Met de zgn [Fakelogger](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.testing.fakelogger-1?view=net-9.0-pp) kunnen deze properties ook niet uitgelezen worden:
 
-![image.png](https://codewithedwin.github.io/EdwinsDocumentation/UnittestMemoryLogger/FakeLogger.png)
+![image.png](https://codewithedwin.github.io/EdwinsDocumentation/SerilogLogTester/FakeLogger.png)
 
 Daarvoor kun je dit testen door de logging op te vangen in een class en deze vervolgens te gaan testen.
 
 # Bestanden
 De volgende bestanden zijn nodig om de SerilogLogTester vorm te geven:
-- [SerilogLogTester_Core.cs](./SerilogLogTester/SerilogLogTester_Core.cs)
-- [SerilogLogTester_Validations.cs](./SerilogLogTester/SerilogLogTester_Validations.cs)
-- [SerilogLogTesterEvent.cs](./SerilogLogTester/SerilogLogTesterEvent.cs)
-- [PushPropertyLogEventSink.cs](./SerilogLogTester/PushPropertyLogEventSink.cs)
+- [SerilogLogTester_Core.cs](./SerilogLogTester_Core.cs)
+- [SerilogLogTester_Validations.cs](./SerilogLogTester_Validations.cs)
+- [SerilogLogTesterEvent.cs](./SerilogLogTesterEvent.cs)
+- [PushPropertyLogEventSink.cs](./PushPropertyLogEventSink.cs)
 
 De volgende nuget packages zijn hiervoor nodig:
 - SeriLog
