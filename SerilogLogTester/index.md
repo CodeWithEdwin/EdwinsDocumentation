@@ -58,6 +58,7 @@ Het message template (in splunk de property @mt) is hierbij: _Logmessage {proper
 De log message hierbij is het template gevuld met waarden (denk aan string.format), de log message is dan: _Logmessage propertyWaarde_.
 
 De volgende validatie functies:
+
 | Functie | Toelichting |
 |--|--|
 | VerifyNoLogging() | Hiermee wordt gevalideerd dat er geen enkele logregel is weggeschreven. |
