@@ -26,8 +26,10 @@ Dit is mijn site met documenatie.
 * [Unittest SerilogLogTester](./SerilogLogTester/index.html)
 
 # Links
-
 * [Bookmarks](./links.html)
+
+# Powershell
+* [Lijst met framework versies van projecten in huidige map](/files/framework.ps1)
 
 # Handige applicaties
 * [Wintail](https://www.baremetalsoft.com/wintail/)
