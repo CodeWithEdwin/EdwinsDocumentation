@@ -175,6 +175,7 @@ IEnumerable<ISerilogLogTester> serilogLogTesters => [serilogLogTester1, serilogL
 ```
 
 De volgende validatie functies zijn dan beschikbaar voor deze lijst:
+
 | Functie | Toelichting |
 |--|--|
 | VerifyScopeProperties(params KeyValuePair<object, object?>[] expected) | Hiermee wordt gevalideerd of één SerilogLogTesters alle keyvaluepairs als scope gelogd heeft, ook het datatype wordt hierbij valideert. |
