@@ -30,10 +30,13 @@ Daarvoor kun je dit testen door de logging op te vangen in een class en deze ver
 
 # Bestanden
 De volgende bestanden zijn nodig om de SerilogLogTester vorm te geven:
+- [LoggedScopeProperties.cs](./LoggedScopeProperties.cs)
+- [ISerilogLogTester.cs](./ISerilogLogTester.cs)
 - [SerilogLogTester_Core.cs](./SerilogLogTester_Core.cs)
 - [SerilogLogTester_Validations.cs](./SerilogLogTester_Validations.cs)
 - [SerilogLogTesterEvent.cs](./SerilogLogTesterEvent.cs)
 - [PushPropertyLogEventSink.cs](./PushPropertyLogEventSink.cs)
+- [SerilogLogTesterExtenstions.cs](./SerilogLogTesterExtenstions.cs)
 
 De volgende nuget packages zijn hiervoor nodig:
 - SeriLog
@@ -58,15 +61,15 @@ Het message template (in splunk de property @mt) is hierbij: _Logmessage {proper
 De log message hierbij is het template gevuld met waarden (denk aan string.format), de log message is dan: _Logmessage propertyWaarde_.
 
 De volgende validatie functies:
-
 | Functie | Toelichting |
 |--|--|
 | VerifyNoLogging() | Hiermee wordt gevalideerd dat er geen enkele logregel is weggeschreven. |
 | VerifyNoScopeLogProperties() | Hiermee wordt gevalideerd dat er geen enkele BeginScope properties zijn weggeschreven. |
-| VerifyLogEventByMessage(LogLevel loglevel, string message, Exception exception, params KeyValuePair<string, string>[]? expectedLogProperties) | Hiermee kan een logregel op basis van het message met een exception gevalideerd worden.|
-| VerifyLogEventByMessage(LogLevel loglevel, string message, params KeyValuePair<string, string>[]? expectedLogProperties) | Hiermee kan een logregel op basis van het message zonder een exception gevalideerd worden.|
-| VerifyLogEventByMessageTemplate(LogLevel loglevel, Exception exception, string message,params KeyValuePair<string, string>[]? expectedLogProperties) | Hiermee kan een logregel op basis van het message template met een exception gevalideerd worden.|
-| VerifyLogEventByMessageTemplate(LogLevel loglevel, string message, params KeyValuePair<string, string>[]? expectedLogProperties) | Hiermee kan een logregel op basis van het message template zonder een exception gevalideerd worden.|
+| VerifyScopeProperties(params KeyValuePair<object, object?>[] expected) | Hiermee wordt gevalideerd dat alle keyvaluepairs als scope gelogd zijn, ook het datatype wordt hierbij gevalideerd. |
+| VerifyLogEventByMessage(LogLevel loglevel, string message, Exception exception) | Hiermee kan een logregel op basis van de message met een exception gevalideerd worden.|
+| VerifyLogEventByMessage(LogLevel loglevel, string message) | Hiermee kan een logregel op basis van de message zonder een exception gevalideerd worden.|
+| VerifyLogEventByMessageTemplate(LogLevel loglevel, Exception exception, string message,params KeyValuePair<string, object?>[]? expectedLogProperties) | Hiermee kan een logregel op basis van de message template met een exception gevalideerd worden.|
+| VerifyLogEventByMessageTemplate(LogLevel loglevel, string message, params KeyValuePair<string, object?>[]? expectedLogProperties) | Hiermee kan een logregel op basis van de message template zonder een exception gevalideerd worden.|
 | VerifyNumberOfLogEvents(int numberOfLogEvents) | Hiermee kan het totaal aantal logregels die geschreven zijn gevalideerd worden.|
 | VerifyNumberOfScopeLogProperties(int numberOfLogEvents) | Hiermee wordt gevalideerd hoeveel properties er met BeginScope zijn weggeschreven. |
 
@@ -93,11 +96,11 @@ serilogLogTester.VerifyScopeProperties([new("{MessageFormat}", "De waarde is: {p
 ```
 Door de `SerilogLogTester` wordt het messageFormat opgeslagen met de key `{MessageFormat}`.
 
-### Ilogger.BeginScope<Dictionary<string, string>>(Dictionary<string, string> state)
+### Ilogger.BeginScope<Dictionary<object, object?>>(Dictionary<object, object?> state)
 Met deze functie kunnen properties en waarden toegevoegd worden aan de logregels.
 Een voorbeeld:
 ```Csharp
- var scope = new Dictionary<string, string>
+ var scope = new Dictionary<object, object?>
  {
      { "property1", "propertyWaarde1" },
      { "property2", "propertyWaarde2" }
@@ -144,7 +147,7 @@ In onderstaand voorbeeld registeert de `SerilogLogTester` de `LogContext.PushPro
 De `LogContext.PushProperty` kan met  `SerilogLogTester` op de volgende manieren gecontroleerd worden:
 ```Csharp
 serilogLogTester.VerifyLogEventByMessageTemplate(LogLevel.Information, "Logmessage {Nummer}", [new("property", "propertyWaarde"),new("Nummer", "1")]);
-serilogLogTester.VerifyLogEventByMessage(LogLevel.Information, "Logmessage 1", [new("property", "propertyWaarde"),new("Nummer", "1")]);
+serilogLogTester.VerifyLogEventByMessage(LogLevel.Information, "Logmessage 1");
  ```
 
 In onderstaand voorbeeld registeert de `SerilogLogTester` de `LogContext.PushProperty` *niet* door het ontbreken van een logregel binnen de using:
@@ -160,8 +163,25 @@ logger.LogInformation("Logmessage {Nummer}", "1");
 Met `SerilogLogTester` ziet `LogContext.PushProperty`*niet*:
 ```Csharp
 serilogLogTester.VerifyLogEventByMessageTemplate(LogLevel.Information, "Logmessage {Nummer}", [new("Nummer", "1")]);
-serilogLogTester.VerifyLogEventByMessage(LogLevel.Information, "Logmessage 1", [new("Nummer", "1")]);
+serilogLogTester.VerifyLogEventByMessage(LogLevel.Information, "Logmessage 1");
  ```
+
+## Meerdere SerilogLogTesters valideren
+Het kan eenvoudig zijn om meerdere `SerilogLogTester` tesamen in één keer te testen, in bijv. unittests kan dit handig zijn omdat er meerdere `SerilogLogTester` classes aanwezig zijn.
+Meerdere `SerilogLogTester` classes kunnen eenvoudig tesamen genomen worden door er een lijst van te maken:
+```Csharp
+IEnumerable<ISerilogLogTester> serilogLogTesters => [serilogLogTester1, serilogLogTester2];
+```
+
+De volgende validatie functies zijn dan beschikbaar voor deze lijst:
+| Functie | Toelichting |
+|--|--|
+| VerifyScopeProperties(params KeyValuePair<object, object?>[] expected) | Hiermee wordt gevalideerd of één SerilogLogTesters alle keyvaluepairs als scope gelogd heeft, ook het datatype wordt hierbij valideert. |
+| VerifyLogEventByMessage(LogLevel loglevel, string message) | Hiermee wordt gevalideerd of één SerilogLogTesters een logregel op basis van de message zonder een exception heeft.|
+| VerifyLogEventByMessage(LogLevel loglevel, string message, Exception exception)| Hiermee wordt gevalideerd of één SerilogLogTesters een logregel op basis van de message met een exception heeft.|
+| VerifyLogEventByMessageTemplate(LogLevel loglevel, string message, params KeyValuePair<string, object?>[]? expectedLogProperties) | Hiermee wordt gevalideerd of één SerilogLogTesters een logregel op basis van de message zonder een exception heeft.|
+| VerifyLogEventByMessageTemplate(LogLevel loglevel, string message, Exception exception, params KeyValuePair<string, object?>[]? expectedLogProperties)| Hiermee wordt gevalideerd of één SerilogLogTesters een logregel op basis van de message met een exception heeft.|
+
 
 ## Voorbeelden
 
@@ -175,7 +195,14 @@ Kan deze met de `SerilogLogTester` op de volgende manieren gevalideerd worden:
 ```Csharp
 serilogLogTester.VerifyNumberOfLogEvents(1);
 serilogLogTester.VerifyLogEventByMessageTemplate(LogLevel.Warning, "Logmessage {property}", [new("property", "propertyWaarde")]);
-serilogLogTester.VerifyLogEventByMessage(LogLevel.Warning, "Logmessage propertyWaarde", [new("property", "propertyWaarde")]);
+serilogLogTester.VerifyLogEventByMessage(LogLevel.Warning, "Logmessage propertyWaarde");
+```
+
+Als er meerdere `SerilogLogTester` classes gevalideerd moeten worden kan dat op deze manier:
+```Csharp
+IEnumerable<ISerilogLogTester> serilogLogTesters => [serilogLogTester1, serilogLogTester2];
+serilogLogTesters.VerifyLogEventByMessageTemplate(LogLevel.Warning, "Logmessage {property}", [new("property", "propertyWaarde")]);
+serilogLogTesters.VerifyLogEventByMessage(LogLevel.Warning, "Logmessage propertyWaarde");
 ```
 
 ### Logwarning met exception
@@ -190,13 +217,20 @@ Kan deze met de `SerilogLogTester` op de volgende manieren gevalideerd worden:
 var exception = new NotImplementedException("No content");
 serilogLogTester.VerifyNumberOfLogEvents(1);
 serilogLogTester.VerifyLogEventByMessageTemplate(LogLevel.Warning, "Logmessage {property}", exception, [new("property", "propertyWaarde")]);
-serilogLogTester.VerifyLogEventByMessage(LogLevel.Warning, "Logmessage propertyWaarde", exception, [new("property", "propertyWaarde")]);
+serilogLogTester.VerifyLogEventByMessage(LogLevel.Warning, "Logmessage propertyWaarde", exception);
+```
+
+Als er meerdere `SerilogLogTester` classes gevalideerd moeten worden kan dat op deze manier:
+```Csharp
+IEnumerable<ISerilogLogTester> serilogLogTesters => [serilogLogTester1, serilogLogTester2];
+serilogLogTesters.VerifyLogEventByMessageTemplate(LogLevel.Warning, "Logmessage {property}", exception, [new("property", "propertyWaarde")]);
+serilogLogTesters.VerifyLogEventByMessage(LogLevel.Warning, "Logmessage propertyWaarde", exception);
 ```
 
 ### BeginScope
 Als het volgende wordt weggeschreven:
 ```Csharp
- var scope = new Dictionary<string, string>
+ var scope = new Dictionary<object, object?>
  {
      { "property", "propertyWaarde" }
  };
@@ -214,6 +248,12 @@ serilogLogTester.VerifyNumberOfScopeLogProperties(1);
 serilogLogTester.VerifyScopeProperties([new("property", "propertyWaarde")]);
 ```
 
+Als er meerdere `SerilogLogTester` classes gevalideerd moeten worden kan dat op deze manier:
+```Csharp
+IEnumerable<ISerilogLogTester> serilogLogTesters => [serilogLogTester1, serilogLogTester2];
+serilogLogTesters.VerifyScopeProperties([new("property", "propertyWaarde")]);
+```
+
 ### LogContext.PushProperty
 Als het volgende wordt weggeschreven:
 ```Csharp
@@ -227,5 +267,10 @@ Als het volgende wordt weggeschreven:
 ```Csharp
 serilogLogTester.VerifyNumberOfLogEvents(1);
 serilogLogTester.VerifyLogEventByMessageTemplate(LogLevel.Information, "Logmessage 1", [new("property", "propertyWaarde")]);
-serilogLogTester.VerifyLogEventByMessage(LogLevel.Information, "Logmessage 1", [new("property", "propertyWaarde")]);
+```
+
+Als er meerdere `SerilogLogTester` classes gevalideerd moeten worden kan dat op deze manier:
+```Csharp
+IEnumerable<ISerilogLogTester> serilogLogTesters => [serilogLogTester1, serilogLogTester2];
+serilogLogTesters.VerifyLogEventByMessageTemplate(LogLevel.Information, "Logmessage 1", [new("property", "propertyWaarde")]);
 ```
