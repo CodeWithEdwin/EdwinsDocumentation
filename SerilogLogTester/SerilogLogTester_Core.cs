@@ -11,12 +11,12 @@ namespace SerilogLogTester;
 /// om aanroepen naar logger.BeginScope() en de bijbehorende waarden in diverse testen te kunnen valideren
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public partial class SerilogLogTester<T> : ILogger<T>
+public partial class SerilogLogTester<T> : ISerilogLogTester, ILogger<T>
 {
     private const string MessageTemplateKey = "{OriginalFormat}";
     private const string UnknownPlaceholder = "<Unknown>";
     private readonly ConcurrentBag<SerilogLogTesterEvent> _loggedEvents = [];
-    private readonly ConcurrentBag<KeyValuePair<string, string?>> _loggedScopes = [];
+    private readonly ConcurrentBag<LoggedScopeProperties> _loggedScopes = [];
 
     /// <summary>
     /// alle loglevels tonen
@@ -36,17 +36,29 @@ public partial class SerilogLogTester<T> : ILogger<T>
     {
         switch (state)
         {
-            case Dictionary<string, string> stateDictionary:
-                stateDictionary.ToList().ForEach(kv => _loggedScopes.Add(new(kv.Key, kv.Value)));
+            case string message:
+                _loggedScopes.Add(
+                    new(MessageTemplateKey, message));
                 break;
 
-            case string stateString:
-                _loggedScopes.Add(new("{Message}", stateString));
-                break;
+            default:
+                if (state is System.Collections.IEnumerable enumerable &&
+                    state is not string)
+                {
+                    foreach (var item in enumerable)
+                    {
+                        var type = item.GetType();
 
-            case IReadOnlyList<KeyValuePair<string, object?>> stateFormattedValues:
-                stateFormattedValues.ToList().ForEach(kv =>
-                _loggedScopes.Add(new(kv.Key.Replace(MessageTemplateKey, "{MessageFormat}"), kv.Value == null ? null : $"{kv.Value}")));
+                        if (type.IsGenericType &&
+                            type.GetGenericTypeDefinition() == typeof(KeyValuePair<,>))
+                        {
+                            var propertyKey = type.GetProperty("Key")?.GetValue(item);
+                            var propertyValue = type.GetProperty("Value")?.GetValue(item);
+
+                            _loggedScopes.Add(new(propertyKey, propertyValue));
+                        }
+                    }
+                }
                 break;
         }
 
